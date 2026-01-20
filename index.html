@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS Portfolio</title>
+    <title>Yusha Ansari - CS Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -15,7 +15,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
         }
 
         nav {
@@ -24,7 +25,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
         nav ul {
@@ -38,14 +39,20 @@
         nav a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background 0.3s;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         nav a:hover {
             background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        nav a.active {
+            background: rgba(255,255,255,0.3);
         }
 
         .container {
@@ -56,7 +63,7 @@
 
         .page {
             display: none;
-            animation: fadeIn 0.5s;
+            animation: fadeIn 0.6s ease-in-out;
         }
 
         .page.active {
@@ -64,123 +71,157 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
         }
 
         .hero {
-            background: white;
-            border-radius: 10px;
-            padding: 3rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border-radius: 15px;
+            padding: 4rem 3rem;
             margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.15);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            text-align: center;
         }
 
         .hero h1 {
-            color: #667eea;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .tagline {
+            color: #888;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .section {
             background: white;
-            border-radius: 10px;
-            padding: 2rem;
+            border-radius: 15px;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
         }
 
         .section h2 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #667eea;
-        }
-
-        .experience-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1.5rem;
-            padding-left: 1rem;
-            border-left: 3px solid #764ba2;
-        }
-
-        .experience-item h3 {
-            color: #764ba2;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-item .date {
-            color: #666;
-            font-style: italic;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid #667eea;
+            font-size: 1.8rem;
+            font-weight: 600;
         }
 
         .project-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 3rem;
-            border-radius: 10px;
+            padding: 4rem 3rem;
+            border-radius: 15px;
             margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
         }
 
         .project-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            line-height: 1.6;
         }
 
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
         }
 
         .tech-tag {
-            background: rgba(102, 126, 234, 0.2);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
             color: #667eea;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
         }
 
         .project-image {
             width: 100%;
-            height: 300px;
+            height: 350px;
             background: linear-gradient(135deg, #e0e7ff 0%, #f3e7ff 100%);
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #667eea;
             font-size: 1.2rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
         .project-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 10px;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border: 4px solid #667eea;
         }
 
         .feature-list {
             list-style: none;
+            padding-left: 0;
         }
 
         .feature-list li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
+            padding: 0.8rem 0;
+            padding-left: 2rem;
             position: relative;
+            line-height: 1.6;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-list li:hover {
+            transform: translateX(5px);
         }
 
         .feature-list li:before {
@@ -189,16 +230,89 @@
             left: 0;
             color: #667eea;
             font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        #processing-canvas {
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border: 3px solid #667eea;
+        }
+
+        .canvas-container {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            border-radius: 15px;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff5cc 100%);
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .insight-box h3 {
+            color: #f57c00;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .project-header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="#home" onclick="showPage('home')">Home</a></li>
-            <li><a href="#project1" onclick="showPage('project1')">Project 1</a></li>
-            <li><a href="#project2" onclick="showPage('project2')">Project 2</a></li>
-            <li><a href="#project3" onclick="showPage('project3')">Project 3</a></li>
+            <li><a href="#home" onclick="showPage('home')" class="nav-link">Home</a></li>
+            <li><a href="#project1" onclick="showPage('project1')" class="nav-link">Digital Citizenship</a></li>
+            <li><a href="#project2" onclick="showPage('project2')" class="nav-link">Nameplate</a></li>
+            <li><a href="#project3" onclick="showPage('project3')" class="nav-link">Culminating</a></li>
         </ul>
     </nav>
 
@@ -207,7 +321,8 @@
         <div id="home" class="page active">
             <div class="hero">
                 <h1>Yusha Ansari</h1>
-                <p style="font-size: 1.2rem; color: #666;">Computer Science Student</p>
+                <p class="subtitle">Computer Science Student</p>
+                <p class="tagline">Passionate about software development, algorithms, and creating innovative solutions</p>
             </div>
 
             <div class="section">
@@ -217,10 +332,28 @@
             </div>
 
             <div class="section">
-                <h2>Skills</h2>
+                <h2>Skills & Technologies</h2>
                 <div class="tech-stack">
                     <span class="tech-tag">Java</span>
                     <span class="tech-tag">Python</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Featured Projects</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>🎓 Digital Citizenship</h3>
+                        <p>Educational presentation on internet safety and responsible online behavior</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>🎨 Creative Nameplate</h3>
+                        <p>Interactive Processing sketch with custom art and animations</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>🎮 Snek Game</h3>
+                        <p>2-player competitive snake game with customization</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -235,24 +368,33 @@
             <div class="section">
                 <h2>Overview</h2>
                 <div class="project-image">
-                    <img src="https://i.imgur.com/your-image-link.png" alt="Digital Citizenship Presentation">
+                    <span>Digital Citizenship Presentation Preview</span>
                 </div>
                 <p>This project is a presentation about digital citizenship, focusing on internet safety and responsible online behavior. The presentation covers important topics like protecting personal information, identifying scams and malware, and preventing cyberbullying.</p>
             </div>
 
             <div class="section">
                 <h2>What I Struggled With</h2>
-                <p>Making my part of the presentation concise but entertaining.</p>
+                <div class="insight-box">
+                    <p>Making my part of the presentation concise but entertaining was a real challenge. Finding the balance between educational content and engagement required multiple iterations.</p>
+                </div>
             </div>
 
             <div class="section">
                 <h2>What I'm Proud Of</h2>
-                <p>I created a video that was funny.</p>
+                <div class="insight-box">
+                    <h3>Creative Achievement</h3>
+                    <p>I created a video that was funny and engaging while still delivering the important safety messages. This shows my ability to make educational content accessible and memorable.</p>
+                </div>
             </div>
 
             <div class="section">
                 <h2>Next Steps</h2>
-                <p>Working on my presentation skills and film making skills to make them more interesting.</p>
+                <ul class="feature-list">
+                    <li>Working on my presentation skills to make them more engaging and dynamic</li>
+                    <li>Developing filmmaking skills to create more polished educational videos</li>
+                    <li>Exploring new ways to make technical topics interesting and accessible</li>
+                </ul>
             </div>
         </div>
 
@@ -267,84 +409,220 @@
                 <h2>Overview</h2>
                 <p>This is an interactive Processing sketch that displays my name "YUSHA" with creative letter designs, Pakistan's flag, a detailed boat, and colorful fish swimming randomly in the water. The "S" is transparent to symbolize remembering your roots.</p>
                 
-                <div style="text-align: center; margin: 2rem 0;">
+                <div class="canvas-container">
                     <canvas id="processing-canvas"></canvas>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Technologies Used</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">Java Processing</span>
+                    <span class="tech-tag">Graphics Programming</span>
+                    <span class="tech-tag">Creative Coding</span>
                 </div>
             </div>
 
             <div class="section">
                 <h2>Key Features</h2>
                 <ul class="feature-list">
-                    <li>Custom drawn letters spelling out my name (YUSHA)</li>
+                    <li>Custom drawn letters spelling out my name (YUSHA) with unique artistic designs</li>
                     <li>Pakistan's flag with accurate crescent moon and star design</li>
                     <li>A detailed boat with cockpit and windows floating on water</li>
-                    <li>Seven colorful fish that spawn randomly in the water</li>
+                    <li>Seven colorful fish that spawn randomly in the water for visual interest</li>
                     <li>The "S" is transparent to symbolize remembering your roots (the background shows through)</li>
                 </ul>
             </div>
 
             <div class="section">
                 <h2>Challenges & Solutions</h2>
-                <p>The main challenge I faced was using arcs in Java Processing and understanding how to make them go where I wanted. The solution was that I just used a Bezier curve for the letter "S" instead, which gave me much better control over the shape and positioning.</p>
+                <div class="insight-box">
+                    <h3>Technical Challenge</h3>
+                    <p>The main challenge I faced was using arcs in Java Processing and understanding how to make them go where I wanted. The arc function's parameters were confusing at first.</p>
+                </div>
+                <div class="insight-box" style="margin-top: 1rem; background: linear-gradient(135deg, #e6f7ff 0%, #cceeff 100%); border-left-color: #2196F3;">
+                    <h3 style="color: #1976D2;">Solution</h3>
+                    <p>I just used a Bezier curve for the letter "S" instead, which gave me much better control over the shape and positioning. This taught me that sometimes the best solution is to use a different tool that's better suited for the job.</p>
+                </div>
             </div>
         </div>
 
         <!-- Project 3 -->
         <div id="project3" class="page">
             <div class="project-header">
-                <h1>Distributed File Storage System</h1>
-                <p>A scalable distributed system for storing and retrieving files with built-in redundancy and fault tolerance</p>
+                <h1>Snek - Culminating Project</h1>
+                <p>A competitive 2-player snake game with customization and strategic gameplay</p>
             </div>
 
             <div class="section">
                 <h2>Overview</h2>
-                <div class="project-image">
-                    <!-- Replace with your project screenshot URL -->
-                    <img src="https://via.placeholder.com/800x300" alt="Distributed File System Architecture">
-                </div>
-                <p>This project implements a distributed file storage system inspired by Google File System (GFS). It supports storing large files across multiple servers with automatic replication for fault tolerance and efficient data retrieval.</p>
-            </div>
-
-            <div class="section">
-                <h2>Technologies Used</h2>
-                <div class="tech-stack">
-                    <span class="tech-tag">Go</span>
-                    <span class="tech-tag">gRPC</span>
-                    <span class="tech-tag">Docker</span>
-                    <span class="tech-tag">Kubernetes</span>
-                    <span class="tech-tag">Redis</span>
+                <p>Snek is a 2-player snake-type game made in Processing where both players compete on the same screen to earn the highest score. Each player controls a snake that moves continuously, grows when it eats food, and can change their snake character during the game. Different types of food are assigned various point values, and a timer set at the start limits the match duration. You can win by either getting the most points or by making the other player hit your body or the wall.</p>
+                
+                <div style="text-align: center; margin: 2rem 0;">
+                    <canvas id="snek-canvas"></canvas>
                 </div>
             </div>
 
             <div class="section">
                 <h2>Key Features</h2>
                 <ul class="feature-list">
-                    <li>Automatic file chunking and distribution across multiple servers</li>
-                    <li>Three-way replication for data redundancy</li>
-                    <li>Master-slave architecture for metadata management</li>
-                    <li>Heartbeat mechanism for detecting node failures</li>
-                    <li>Automatic re-replication when nodes fail</li>
-                    <li>Load balancing for read operations</li>
+                    <li>Two-player competitive gameplay on a single screen with independent controls</li>
+                    <li>Character customization system allowing players to choose from 6 different snake head images</li>
+                    <li>Adjustable game timer (10-120 seconds) for matches of varying length</li>
+                    <li>Two types of food with different point values (green = 1 point, gold = 2 points)</li>
+                    <li>Multiple winning conditions: highest score, opponent collision, or wall collision</li>
+                    <li>Automatic game history saving to track winners and scores</li>
+                    <li>Complete game state management with start screen, setup, gameplay, and end screens</li>
                 </ul>
             </div>
 
             <div class="section">
-                <h2>Technical Highlights</h2>
-                <p>The system uses consistent hashing to distribute files evenly across storage nodes. I implemented a custom consensus protocol for handling master node failures and ensuring metadata consistency. The system can handle concurrent reads and writes while maintaining data integrity.</p>
+                <h2>Learning Logs</h2>
+                
+                <div class="insight-box" style="margin-bottom: 1rem;">
+                    <h3>Learning Log #1 - Variables</h3>
+                    <p>Variables are the foundation of my snake game. I used integer variables to track things like snake size, movement speed, and snake length because these values constantly change while the game runs. For example, p1_speedx and p1_speedy control how the snake moves across the screen, while p1_length determines how many body segments should be drawn. I also used boolean variables like startScreen, playing, and endScreen to track the current state of the game. This made it easy to switch between different screens without creating separate programs. Instead of guessing what should be displayed, the game always checks which state is currently true. Arrays like p1_x and p1_y were necessary to store the positions of every segment of the snake's body. Since a snake has multiple parts, a single variable would not work. Each index in the array represents one segment. At first, I tried using only one variable for the snake's position, but that caused the entire snake to move as a single block instead of following itself. I fixed this by switching to arrays, which allowed me to store and update each body segment separately. I also had issues with snakes spawning off-screen, which I fixed by carefully setting starting values inside resetGame().</p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+int snakeSize = 20;<br>
+int p1_length = 10;<br>
+int p1_speedx = snakeSize;<br>
+int p1_speedy = 0;<br>
+<br>
+int[] p1_x = new int[maxLength];<br>
+int[] p1_y = new int[maxLength];<br>
+<br>
+boolean startScreen = true;<br>
+boolean playing = false;<br>
+boolean endScreen = false;
+                    </div>
+                </div>
+
+                <div class="insight-box" style="margin-bottom: 1rem;">
+                    <h3>Learning Log #2 - Selection Structures</h3>
+                    <p>Selection structures control the flow of my game. I used if, else if, and else statements to decide which screen should be displayed at any moment. This solves the problem of having multiple screens (start, gameplay, and game over) without mixing them.</p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+void draw() {<br>
+&nbsp;&nbsp;if (startScreen) drawStart();<br>
+&nbsp;&nbsp;else if (playing) drawGame();<br>
+&nbsp;&nbsp;else if (endScreen) drawEnd();<br>
+}
+                    </div>
+                    <p style="margin-top: 1rem;">I also used selection structures in collision detection:</p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+if (outOfBounds(p1_x[0], p1_y[0]) || hitBody(p1_x[0], p1_y[0])) {<br>
+&nbsp;&nbsp;endGame();<br>
+}
+                    </div>
+                    <p style="margin-top: 1rem;">This checks whether a snake has hit a wall or a body segment. If the condition is true, the game immediately ends. This prevents the snake from continuing outside the screen or overlapping itself. One challenge I had was accidentally triggering multiple screens at once because more than one boolean was set to true. I fixed this by carefully resetting the other states whenever a new one is activated. For example, when the game starts, startScreen is set to false, and playing is set to true, ensuring only one screen is active at a time.</p>
+                </div>
+
+                <div class="insight-box" style="margin-bottom: 1rem;">
+                    <h3>Learning Log #3 - Repetition Structures</h3>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+for (int i = p1_length - 1; i > 0; i--) {<br>
+&nbsp;&nbsp;p1_x[i] = p1_x[i - 1];<br>
+&nbsp;&nbsp;p1_y[i] = p1_y[i - 1];<br>
+}
+                    </div>
+                    <p>This loop is essential to how the snake moves. Each time the game updates, the loop shifts every body segment forward so it follows the head. The loop starts at the end of the snake and moves backward to avoid overwriting positions too early.</p>
+                    <p style="margin-top: 1rem;">I also used loops when drawing the snake:</p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+for (int i = 0; i < p1_length; i++) {<br>
+&nbsp;&nbsp;rect(p1_x[i], p1_y[i], snakeSize, snakeSize);<br>
+}
+                    </div>
+                    <p style="margin-top: 1rem;">This allows the program to draw every segment of the snake without writing repeated code. If the snake length changes, the loop automatically adjusts. At first, my loop moved forward instead of backward, which caused all body segments to stack on top of each other. I learned that order matters when updating arrays. By reversing the loop direction, each segment correctly follows the one before it. This was a key moment where I understood how repetition structures directly affect game behaviour.</p>
+                </div>
+
+                <div class="insight-box" style="margin-bottom: 1rem;">
+                    <h3>Learning Log #4 - Arrays and Custom Functions</h3>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+int[] p1_x = new int[maxLength];<br>
+int[] p1_y = new int[maxLength];<br>
+int[] p2_x = new int[maxLength];<br>
+int[] p2_y = new int[maxLength];
+                    </div>
+                    <p>Arrays are used to store the positions of each segment of both snakes. Since a snake grows over time and consists of multiple body parts, using single variables would not work. Each index in the array represents one segment of the snake's body. The head of each snake is always stored at index 0, and the remaining indexes store the body segments. This structure allows the snake to move smoothly by shifting each segment forward as the head moves. Arrays make the program flexible because the snake length can change without modifying the overall logic. One issue was that unused array positions were being accessed. I solved this by looping only up to p1_length and p2_length, ensuring that only active segments were processed and drawn.</p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+boolean outOfBounds(int x, int y) {<br>
+&nbsp;&nbsp;return x < 0 || x >= width || y < 0 || y >= height;<br>
+}<br>
+<br>
+boolean hitBody(int hx, int hy) {<br>
+&nbsp;&nbsp;for (int i = 1; i < p1_length; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (hx == p1_x[i] && hy == p1_y[i]) return true;<br>
+<br>
+&nbsp;&nbsp;for (int i = 1; i < p2_length; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (hx == p2_x[i] && hy == p2_y[i]) return true;<br>
+<br>
+&nbsp;&nbsp;return false;<br>
+}
+                    </div>
+                    <p style="margin-top: 1rem;">Custom functions were created to keep the code organized and readable. Instead of repeating collision logic inside the main game loop, I placed it into dedicated functions. These functions check whether a snake has hit a wall or collided with itself or the other snake. These functions act as safety checks that enforce the game rules. They prevent snakes from leaving the screen or overlapping with body segments. When a collision is detected, the game immediately ends, which keeps gameplay fair and consistent. At first, collisions between the two snakes were not always detected. I fixed this by checking both snakes' arrays inside the hitBody() function. I also made sure to start the loop at index 1 to avoid the head being falsely detected as colliding with itself.</p>
+                </div>
+
+                <div class="insight-box" style="margin-bottom: 1rem;">
+                    <h3>Learning Log #5 - Debugging and Quality Improvements</h3>
+                    <p>Worked on debugging logic errors, adding movement restrictions, improving game flow, and increasing player clarity through visual feedback. One issue I identified during testing was that players could die suddenly without realizing they were close to the edge of the screen. To solve this, I added a visible border around the playable area. This makes it clear where the out-of-bounds limit is and improves fairness.</p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+stroke(255);<br>
+strokeWeight(3);<br>
+noFill();<br>
+rect(0, 0, width, height);<br>
+noStroke();
+                    </div>
+                    <p style="margin-top: 1rem;">Originally, players could instantly reverse direction and move directly into their own body, causing unfair deaths. To fix this, I added movement restrictions that prevent snakes from turning 180 degrees into themselves.</p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+if (key == 'w' && p1_speedy != snakeSize) {<br>
+&nbsp;&nbsp;p1_speedx = 0;<br>
+&nbsp;&nbsp;p1_speedy = -snakeSize;<br>
+}
+                    </div>
+                    <p style="margin-top: 1rem;">Another issue was that the game sometimes ended in a tie even when only one player hit a wall. To fix this, I introduced separate collision tracking variables for each player.</p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+boolean p1_collided = false;<br>
+boolean p2_collided = false;
+                    </div>
+                    <p style="margin-top: 1rem;">Now each player's collision is checked separately:</p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+if (outOfBounds(p1_x[0], p1_y[0]) || hitOpponentBodyP1()) {<br>
+&nbsp;&nbsp;p1_collided = true;<br>
+}
+                    </div>
+                    <p style="margin-top: 1rem;">Using the collision tracking variables, I updated the end screen logic so the winner is determined by how the game ended, not just by score. This prevents incorrect ties when one player crashes early.</p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+if (p1_collided && !p2_collided) {<br>
+&nbsp;&nbsp;winner = "Winner: Player 2";<br>
+} else if (p2_collided && !p1_collided) {<br>
+&nbsp;&nbsp;winner = "Winner: Player 1";<br>
+}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
     <script>
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
             pages.forEach(page => page.classList.remove('active'));
+            navLinks.forEach(link => link.classList.remove('active'));
+            
             document.getElementById(pageId).classList.add('active');
+            
+            const activeLink = document.querySelector(`a[href="#${pageId}"]`);
+            if (activeLink) activeLink.classList.add('active');
+            
             window.scrollTo(0, 0);
             
-            // Initialize Processing sketch when project2 is shown
             if (pageId === 'project2') {
-                initProcessing();
+                setTimeout(initProcessing, 100);
+            }
+            if (pageId === 'project3') {
+                setTimeout(initSnekGame, 100);
             }
         }
 
@@ -545,12 +823,390 @@
                 new Processing(canvas, processingCode);
                 canvas.dataset.initialized = 'true';
             } catch (e) {
-                console.log('Processing.js not available, showing fallback message');
-                canvas.parentElement.innerHTML = '<p style="color: #666; font-style: italic;">Processing sketch would display here. To view it, you need Processing.js library loaded.</p>';
+                console.log('Processing.js loading...');
+            }
+        }
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            showPage('home');
+        });
+
+        function initSnekGame() {
+            const canvas = document.getElementById('snek-canvas');
+            if (!canvas || canvas.dataset.initialized) return;
+            
+            const snekCode = `
+                int snakeSize = 20;
+                int snakeLength = 1000;
+
+                boolean startScreen = true;
+                boolean setupScreen = false;
+                boolean playing = false;
+                boolean endScreen = false;
+                boolean howToPlay = false;
+
+                int gameTime = 60;
+                int startTime;
+
+                int p1_length = 3;
+                int p1_speedx = snakeSize;
+                int p1_speedy = 0;
+                int[] p1_x = new int[snakeLength];
+                int[] p1_y = new int[snakeLength];
+                int p1_score = 0;
+                int p1_picChoice = 0;
+
+                int p2_length = 3;
+                int p2_speedx = -snakeSize;
+                int p2_speedy = 0;
+                int[] p2_x = new int[snakeLength];
+                int[] p2_y = new int[snakeLength];
+                int p2_score = 0;
+                int p2_picChoice = 1;
+
+                int food1_x, food1_y;
+                int food2_x, food2_y;
+                int foodType1, foodType2;
+                boolean foodEaten1 = true;
+                boolean foodEaten2 = true;
+
+                boolean p1_collided = false;
+                boolean p2_collided = false;
+
+                void setup() {
+                  size(800, 600);
+                  frameRate(11);
+                  textAlign(CENTER);
+                  resetGame();
+                }
+
+                void draw() {
+                  if (howToPlay) drawHowToPlay();
+                  else if (startScreen) drawStart();
+                  else if (setupScreen) drawSetup();
+                  else if (playing) drawGame();
+                  else if (endScreen) drawEnd();
+                }
+
+                void drawStart() {
+                  background(20);
+                  fill(255);
+                  textSize(60);
+                  text("snake", width/2, 140);
+                  textSize(28);
+                  text("2", width/2 + 118, 110);
+                  textSize(20);
+                  text("Press ENTER to Continue", width/2, 240);
+                  drawButton(width/2 - 100, 300, 200, 40, "HOW TO PLAY");
+                }
+
+                void drawSetup() {
+                  background(0);
+                  fill(255);
+                  textSize(48);
+                  text("Game Setup", width/2, 100);
+                  textSize(18);
+                  text("Time: " + gameTime + " seconds (UP / DOWN)", width/2, 180);
+                  fill(0, 200, 255);
+                  text("Player 1: W A S D", width/4, 260);
+                  fill(255, 120, 0);
+                  text("Player 2: Arrow Keys", width*3/4, 260);
+                  fill(255);
+                  text("Press ENTER to Start Game", width/2, 450);
+                }
+
+                void drawHowToPlay() {
+                  background(0);
+                  fill(255);
+                  textSize(48);
+                  text("How To Play", width/2, 120);
+                  textSize(18);
+                  text("Player 1: W A S D", width/2, 200);
+                  text("Player 2: Arrow Keys", width/2, 240);
+                  text("Avoid walls and the other snake.", width/2, 300);
+                  text("Game ends on collision or timer end.", width/2, 340);
+                  text("Press B to go back", width/2, 420);
+                }
+
+                void drawGame() {
+                  background(0);
+                  stroke(255);
+                  strokeWeight(3);
+                  noFill();
+                  rect(0, 0, width, height);
+                  noStroke();
+
+                  movePlayer1();
+                  movePlayer2();
+
+                  if (foodEaten1) spawnFood1();
+                  if (foodEaten2) spawnFood2();
+
+                  drawFood();
+                  drawPlayer1();
+                  drawPlayer2();
+
+                  checkFood();
+                  checkCollision();
+                  drawScore();
+
+                  if ((millis() - startTime) / 1000 >= gameTime) endGame();
+                }
+
+                void drawEnd() {
+                  background(0);
+                  fill(255);
+                  textSize(32);
+                  text("Game Over", width/2, 150);
+                  textSize(20);
+                  String winner;
+
+                  if (p1_collided && !p2_collided) {
+                    winner = "Winner: Player 2";
+                  } else if (p2_collided && !p1_collided) {
+                    winner = "Winner: Player 1";
+                  } else if (p1_collided && p2_collided) {
+                    winner = "Winner: Both Collided!";
+                  } else {
+                    if (p1_score > p2_score) winner = "Winner: Player 1";
+                    else if (p2_score > p1_score) winner = "Winner: Player 2";
+                    else winner = "Winner: Tie";
+                  }
+
+                  text(winner, width/2, 200);
+                  fill(0, 200, 255);
+                  text("Player 1 Score: " + p1_score, width/2, 250);
+                  fill(255, 120, 0);
+                  text("Player 2 Score: " + p2_score, width/2, 280);
+                  fill(255);
+                  text("Press R to Restart", width/2, 340);
+                }
+
+                void movePlayer1() {
+                  for (int i = p1_length - 1; i > 0; i--) {
+                    p1_x[i] = p1_x[i - 1];
+                    p1_y[i] = p1_y[i - 1];
+                  }
+                  p1_x[0] += p1_speedx;
+                  p1_y[0] += p1_speedy;
+                }
+
+                void movePlayer2() {
+                  for (int i = p2_length - 1; i > 0; i--) {
+                    p2_x[i] = p2_x[i - 1];
+                    p2_y[i] = p2_y[i - 1];
+                  }
+                  p2_x[0] += p2_speedx;
+                  p2_y[0] += p2_speedy;
+                }
+
+                void drawPlayer1() {
+                  fill(0, 200, 255);
+                  for (int i = 0; i < p1_length; i++)
+                    rect(p1_x[i], p1_y[i], snakeSize, snakeSize);
+                }
+
+                void drawPlayer2() {
+                  fill(255, 120, 0);
+                  for (int i = 0; i < p2_length; i++)
+                    rect(p2_x[i], p2_y[i], snakeSize, snakeSize);
+                }
+
+                void spawnFood1() {
+                  food1_x = int(random(width / snakeSize)) * snakeSize;
+                  food1_y = int(random(height / snakeSize)) * snakeSize;
+                  foodType1 = int(random(1, 3));
+                  foodEaten1 = false;
+                }
+
+                void spawnFood2() {
+                  food2_x = int(random(width / snakeSize)) * snakeSize;
+                  food2_y = int(random(height / snakeSize)) * snakeSize;
+                  foodType2 = int(random(1, 3));
+                  foodEaten2 = false;
+                }
+
+                void drawFood() {
+                  if (foodType1 == 1) fill(0, 255, 0);
+                  else fill(255, 215, 0);
+                  ellipse(food1_x + snakeSize/2, food1_y + snakeSize/2, snakeSize, snakeSize);
+
+                  if (foodType2 == 1) fill(0, 255, 0);
+                  else fill(255, 215, 0);
+                  ellipse(food2_x + snakeSize/2, food2_y + snakeSize/2, snakeSize, snakeSize);
+                }
+
+                void checkFood() {
+                  if (p1_x[0] == food1_x && p1_y[0] == food1_y) {
+                    p1_length++;
+                    p1_score += foodType1;
+                    foodEaten1 = true;
+                  }
+                  if (p2_x[0] == food1_x && p2_y[0] == food1_y) {
+                    p2_length++;
+                    p2_score += foodType1;
+                    foodEaten1 = true;
+                  }
+
+                  if (p1_x[0] == food2_x && p1_y[0] == food2_y) {
+                    p1_length++;
+                    p1_score += foodType2;
+                    foodEaten2 = true;
+                  }
+                  if (p2_x[0] == food2_x && p2_y[0] == food2_y) {
+                    p2_length++;
+                    p2_score += foodType2;
+                    foodEaten2 = true;
+                  }
+                }
+
+                void checkCollision() {
+                  if (outOfBounds(p1_x[0], p1_y[0]) || hitOpponentBodyP1()) {
+                    p1_collided = true;
+                  }
+                  if (outOfBounds(p2_x[0], p2_y[0]) || hitOpponentBodyP2()) {
+                    p2_collided = true;
+                  }
+                  if (p1_collided || p2_collided) {
+                    endGame();
+                  }
+                }
+
+                boolean hitOpponentBodyP1() {
+                  for (int i = 0; i < p2_length; i++)
+                    if (p1_x[0] == p2_x[i] && p1_y[0] == p2_y[i]) return true;
+                  return false;
+                }
+
+                boolean hitOpponentBodyP2() {
+                  for (int i = 0; i < p1_length; i++)
+                    if (p2_x[0] == p1_x[i] && p2_y[0] == p1_y[i]) return true;
+                  return false;
+                }
+
+                boolean outOfBounds(int x, int y) {
+                  return x < 0 || x >= width || y < 0 || y >= height;
+                }
+
+                void drawScore() {
+                  fill(255);
+                  textSize(14);
+                  text("P1: " + p1_score, 60, 20);
+                  text("P2: " + p2_score, width - 60, 20);
+                }
+
+                void drawButton(int x, int y, int w, int h, String label) {
+                  fill(60);
+                  rect(x, y, w, h, 8);
+                  fill(255);
+                  textSize(16);
+                  text(label, x + w/2, y + h/2 + 6);
+                }
+
+                boolean overButton(int x, int y, int w, int h) {
+                  return mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h;
+                }
+
+                void mousePressed() {
+                  if (startScreen && overButton(width/2 - 100, 300, 200, 40)) {
+                    startScreen = false;
+                    howToPlay = true;
+                  }
+                }
+
+                void keyPressed() {
+                  if (startScreen && keyCode == ENTER) {
+                    startScreen = false;
+                    setupScreen = true;
+                  } else if (setupScreen) {
+                    if (keyCode == UP) gameTime += 5;
+                    if (keyCode == DOWN && gameTime > 10) gameTime -= 5;
+                    if (keyCode == ENTER) {
+                      setupScreen = false;
+                      playing = true;
+                      startTime = millis();
+                    }
+                  } else if (howToPlay && (key == 'b' || key == 'B')) {
+                    howToPlay = false;
+                    startScreen = true;
+                  } else if (playing) {
+                    if (key == 'w' && p1_speedy != snakeSize) {
+                      p1_speedx = 0;
+                      p1_speedy = -snakeSize;
+                    }
+                    if (key == 's' && p1_speedy != -snakeSize) {
+                      p1_speedx = 0;
+                      p1_speedy = snakeSize;
+                    }
+                    if (key == 'a' && p1_speedx != snakeSize) {
+                      p1_speedx = -snakeSize;
+                      p1_speedy = 0;
+                    }
+                    if (key == 'd' && p1_speedx != -snakeSize) {
+                      p1_speedx = snakeSize;
+                      p1_speedy = 0;
+                    }
+                    if (keyCode == UP && p2_speedy != snakeSize) {
+                      p2_speedx = 0;
+                      p2_speedy = -snakeSize;
+                    }
+                    if (keyCode == DOWN && p2_speedy != -snakeSize) {
+                      p2_speedx = 0;
+                      p2_speedy = snakeSize;
+                    }
+                    if (keyCode == LEFT && p2_speedx != snakeSize) {
+                      p2_speedx = -snakeSize;
+                      p2_speedy = 0;
+                    }
+                    if (keyCode == RIGHT && p2_speedx != -snakeSize) {
+                      p2_speedx = snakeSize;
+                      p2_speedy = 0;
+                    }
+                  } else if (endScreen && (key == 'r' || key == 'R')) resetGame();
+                }
+
+                void resetGame() {
+                  p1_length = 3;
+                  p2_length = 3;
+                  p1_score = 0;
+                  p2_score = 0;
+
+                  p1_x[0] = 0;
+                  p1_y[0] = 0;
+                  p2_x[0] = width - snakeSize;
+                  p2_y[0] = height - snakeSize;
+
+                  p1_speedx = snakeSize;
+                  p2_speedx = -snakeSize;
+                  p1_speedy = p2_speedy = 0;
+
+                  foodEaten1 = true;
+                  foodEaten2 = true;
+
+                  p1_collided = false;
+                  p2_collided = false;
+
+                  startScreen = true;
+                  setupScreen = false;
+                  playing = false;
+                  endScreen = false;
+                  howToPlay = false;
+                }
+
+                void endGame() {
+                  playing = false;
+                  endScreen = true;
+                }
+            `;
+            
+            try {
+                new Processing(canvas, snekCode);
+                canvas.dataset.initialized = 'true';
+            } catch (e) {
+                console.log('Processing.js loading...');
             }
         }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
-
 </body>
 </html>
