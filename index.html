@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero {
+            background: white;
+            border-radius: 10px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .hero h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .experience-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid #764ba2;
+        }
+
+        .experience-item h3 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .date {
+            color: #666;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e7ff 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home" onclick="showPage('home')">Home</a></li>
+            <li><a href="#project1" onclick="showPage('project1')">Project 1</a></li>
+            <li><a href="#project2" onclick="showPage('project2')">Project 2</a></li>
+            <li><a href="#project3" onclick="showPage('project3')">Project 3</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>Your Name</h1>
+                <p style="font-size: 1.2rem; color: #666;">Computer Science Student & Developer</p>
+            </div>
+
+            <div class="section">
+                <h2>About Me</h2>
+                <p>Welcome to my portfolio! I'm a passionate computer science student with a strong interest in software development, algorithms, and creating innovative solutions to complex problems. I love learning new technologies and applying them to build meaningful projects.</p>
+                <p style="margin-top: 1rem;">When I'm not coding, you can find me exploring the latest tech trends, contributing to open-source projects, or working on personal development.</p>
+            </div>
+
+            <div class="section">
+                <h2>Experience</h2>
+                
+                <div class="experience-item">
+                    <h3>Software Engineering Intern</h3>
+                    <div class="date">Summer 2024</div>
+                    <p>Developed full-stack web applications using React and Node.js. Collaborated with cross-functional teams to deliver features that improved user engagement by 30%.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Teaching Assistant - Data Structures</h3>
+                    <div class="date">Fall 2023 - Spring 2024</div>
+                    <p>Assisted professor in teaching fundamental data structures and algorithms. Held weekly office hours and graded assignments for a class of 150+ students.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Freelance Developer</h3>
+                    <div class="date">2023 - Present</div>
+                    <p>Built custom websites and applications for local businesses. Managed end-to-end development from client requirements to deployment and maintenance.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Skills</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Git</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">AWS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 1 -->
+        <div id="project1" class="page">
+            <div class="project-header">
+                <h1>Task Management System</h1>
+                <p>A full-stack web application for managing tasks and projects with real-time collaboration features</p>
+            </div>
+
+            <div class="section">
+                <h2>Overview</h2>
+                <div class="project-image">Project Screenshot Placeholder</div>
+                <p>This project is a comprehensive task management system designed to help teams collaborate effectively. It features real-time updates, user authentication, and an intuitive drag-and-drop interface for organizing tasks across multiple boards.</p>
+            </div>
+
+            <div class="section">
+                <h2>Technologies Used</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Socket.io</span>
+                    <span class="tech-tag">Express</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Key Features</h2>
+                <ul class="feature-list">
+                    <li>Real-time collaboration with WebSocket integration</li>
+                    <li>Drag-and-drop task organization across custom boards</li>
+                    <li>User authentication and authorization with JWT</li>
+                    <li>Task filtering, sorting, and search functionality</li>
+                    <li>Responsive design for mobile and desktop</li>
+                    <li>Email notifications for task updates</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Challenges & Solutions</h2>
+                <p>One of the main challenges was implementing real-time updates without overwhelming the server. I solved this by implementing efficient WebSocket connections and optimizing database queries to handle concurrent users effectively.</p>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div id="project2" class="page">
+            <div class="project-header">
+                <h1>Machine Learning Image Classifier</h1>
+                <p>A deep learning model that classifies images with 95% accuracy using convolutional neural networks</p>
+            </div>
+
+            <div class="section">
+                <h2>Overview</h2>
+                <div class="project-image">Project Demo Placeholder</div>
+                <p>This project implements a convolutional neural network (CNN) to classify images across 10 different categories. The model was trained on a dataset of over 50,000 images and achieves 95% accuracy on the test set.</p>
+            </div>
+
+            <div class="section">
+                <h2>Technologies Used</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">Keras</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">Matplotlib</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Key Features</h2>
+                <ul class="feature-list">
+                    <li>Custom CNN architecture with multiple convolutional layers</li>
+                    <li>Data augmentation to improve model generalization</li>
+                    <li>Transfer learning using pre-trained VGG16 model</li>
+                    <li>Comprehensive evaluation with confusion matrices and ROC curves</li>
+                    <li>Web interface for real-time image classification</li>
+                    <li>Model optimization for faster inference</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Results & Impact</h2>
+                <p>The model achieved 95% accuracy on the test dataset, significantly outperforming baseline models. The project demonstrated the effectiveness of data augmentation and transfer learning in improving model performance with limited training data.</p>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div id="project3" class="page">
+            <div class="project-header">
+                <h1>Distributed File Storage System</h1>
+                <p>A scalable distributed system for storing and retrieving files with built-in redundancy and fault tolerance</p>
+            </div>
+
+            <div class="section">
+                <h2>Overview</h2>
+                <div class="project-image">Architecture Diagram Placeholder</div>
+                <p>This project implements a distributed file storage system inspired by Google File System (GFS). It supports storing large files across multiple servers with automatic replication for fault tolerance and efficient data retrieval.</p>
+            </div>
+
+            <div class="section">
+                <h2>Technologies Used</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">Go</span>
+                    <span class="tech-tag">gRPC</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">Kubernetes</span>
+                    <span class="tech-tag">Redis</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Key Features</h2>
+                <ul class="feature-list">
+                    <li>Automatic file chunking and distribution across multiple servers</li>
+                    <li>Three-way replication for data redundancy</li>
+                    <li>Master-slave architecture for metadata management</li>
+                    <li>Heartbeat mechanism for detecting node failures</li>
+                    <li>Automatic re-replication when nodes fail</li>
+                    <li>Load balancing for read operations</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Technical Highlights</h2>
+                <p>The system uses consistent hashing to distribute files evenly across storage nodes. I implemented a custom consensus protocol for handling master node failures and ensuring metadata consistency. The system can handle concurrent reads and writes while maintaining data integrity.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
